@@ -105,22 +105,28 @@
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
---DROP TABLE movie
---DROP TABLE studio
---DROP TABLE roles
---DROP TABLE actor
---WHERE ID = 1;
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS studio;
+DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS actor;
 
 -- Create new tables, according to your domain model
 -- TODO!
 
-CREATE TABLE movie
+CREATE TABLE movies (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT,
+  year INTEGER,
+  MPAA TEXT,
+  studio_ID TEXT,
+  Roles_ID TEXT,
+);
 
-CREATE TABLE studio
+--CREATE TABLE studio
 
-CREATE TABLE roles
+--CREATE TABLE roles
 
-CREATE TABLE actor
+--CREATE TABLE actor
 
 
 -- Insert data into your database that reflects the sample data shown above
