@@ -105,9 +105,23 @@
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
+--DROP TABLE movie
+--DROP TABLE studio
+--DROP TABLE roles
+--DROP TABLE actor
+--WHERE ID = 1;
 
 -- Create new tables, according to your domain model
 -- TODO!
+
+CREATE TABLE movie
+
+CREATE TABLE studio
+
+CREATE TABLE roles
+
+CREATE TABLE actor
+
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
@@ -120,6 +134,8 @@
 
 -- The SQL statement for the movies output
 -- TODO!
+
+--SELECT title, year, MPAA, Studio_ID, Roles_ID FROM Movie;
 
 -- Prints a header for the cast output
 .print ""
