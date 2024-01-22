@@ -150,6 +150,9 @@ CREATE TABLE actor(
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
+INSERT INTO Movies (title, year, MPAA, studio_ID) VALUES ("Batman Begins","2005", "PG-13", "Warner Bros.");
+INSERT INTO Movies (title, year, MPAA, studio_ID) VALUES ("The Dark Knight","2008", "PG-13", "Warner Bros.");
+INSERT INTO Movies (title, year, MPAA, studio_ID) VALUES ("The Dark Knight Rises","2012", "PG-13", "Warner Bros.");
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -158,9 +161,7 @@ CREATE TABLE actor(
 
 -- The SQL statement for the movies output
 -- TODO!
-SELECT title FROM Movies;
-
---year, MPAA, studio_id, roles_id FROM Movies;
+SELECT title, year, MPAA, studio_id, roles_id FROM Movies;
 
 -- Prints a header for the cast output
 .print ""
