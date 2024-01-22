@@ -106,7 +106,6 @@
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
 DROP TABLE IF EXISTS Movies;
-DROP TABLE IF EXISTS studio;
 DROP TABLE IF EXISTS roles;
 DROP TABLE IF EXISTS actor;
 
@@ -126,13 +125,13 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
 
 CREATE TABLE studio(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  Movie_ID INTEGER
+  Movies_ID INTEGER
 );
 
 --CREATE TABLE roles
 CREATE TABLE roles(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  movie_id INTEGER,
+  Movies_id INTEGER,
   actor_id INTEGER,
   character TEXT
 );
@@ -140,7 +139,7 @@ CREATE TABLE roles(
 --CREATE TABLE actor
 CREATE TABLE actor(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  movie_id INTEGER,
+  Movies_id INTEGER,
   name_first TEXT,
   name_last TEXT
   roles_id INTEGER
@@ -153,7 +152,7 @@ CREATE TABLE actor(
 INSERT INTO Movies (title, year, MPAA, studio) VALUES ("Batman Begins","2005", "PG-13", "Warner Bros.");
 INSERT INTO Movies (title, year, MPAA, studio) VALUES ("The Dark Knight","2008", "PG-13", "Warner Bros.");
 INSERT INTO Movies (title, year, MPAA, studio) VALUES ("The Dark Knight Rises","2012", "PG-13", "Warner Bros.");
-INSERT INTO Movies (title, year, MPAA, studio) VALUES ("The Dark Knight Rises","2012", "PG-13", "Warner Bros.");
+INSERT INTO Roles (Movies_ID, actor_id, character) VALUES (1,1, "Batman");
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -173,3 +172,4 @@ SELECT title, year, MPAA, studio, roles_id FROM Movies;
 
 -- The SQL statement for the cast output
 -- TODO!
+SELECT Movies_ID, Actor_id, character FROM roles;
