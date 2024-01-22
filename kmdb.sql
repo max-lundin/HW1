@@ -105,7 +105,7 @@
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
-DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS Movies;
 DROP TABLE IF EXISTS studio;
 DROP TABLE IF EXISTS roles;
 DROP TABLE IF EXISTS actor;
@@ -113,20 +113,38 @@ DROP TABLE IF EXISTS actor;
 -- Create new tables, according to your domain model
 -- TODO!
 
-CREATE TABLE movies (
+CREATE TABLE Movies(
 id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT,
   year INTEGER,
   MPAA TEXT,
   studio_ID TEXT,
-  Roles_ID TEXT,
+  Roles_ID TEXT
 );
 
 --CREATE TABLE studio
 
+CREATE TABLE studio(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  Movie_ID INTEGER
+);
+
 --CREATE TABLE roles
+CREATE TABLE roles(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  movie_id INTEGER,
+  actor_id INTEGER,
+  character TEXT
+);
 
 --CREATE TABLE actor
+CREATE TABLE actor(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  movie_id INTEGER,
+  name_first TEXT,
+  name_last TEXT
+  roles_id INTEGER
+);
 
 
 -- Insert data into your database that reflects the sample data shown above
@@ -140,8 +158,9 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
 
 -- The SQL statement for the movies output
 -- TODO!
+SELECT title FROM Movies;
 
---SELECT title, year, MPAA, Studio_ID, Roles_ID FROM Movie;
+--year, MPAA, studio_id, roles_id FROM Movies;
 
 -- Prints a header for the cast output
 .print ""
