@@ -113,29 +113,29 @@ DROP TABLE IF EXISTS actor;
 -- TODO!
 
 CREATE TABLE Movies(
-id INTEGER PRIMARY KEY AUTOINCREMENT,
+Movies_id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT,
   year INTEGER,
   MPAA TEXT,
   studio TEXT,
-  FOREIGN KEY roles_id INTEGER
+  FOREIGN KEY (roles_id) INTEGER
 );
 
 --CREATE TABLE roles
 CREATE TABLE roles(
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  Movies TEXT,
-  actor TEXT,
+  roles_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  FOREIGN KEY (Movies_id) TEXT,
+  FOREIGN KEY (actor_id) TEXT,
   character TEXT
 );
 
 --CREATE TABLE actor
 CREATE TABLE actor(
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  Movies TEXT,
+  actor_id INTEGER PRIMARY KEY AUTOINCREMENT,
   name_first TEXT,
-  name_last TEXT
-  roles TEXT
+  name_last TEXT,
+  FOREIGN KEY (movies_id),
+  FOREIGN KEY (roles_id) TEXT
 );
 
 
