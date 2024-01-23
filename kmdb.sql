@@ -118,31 +118,24 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
   year INTEGER,
   MPAA TEXT,
   studio TEXT,
-  Roles_ID TEXT
-);
-
---CREATE TABLE studio
-
-CREATE TABLE studio(
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  Movies_ID INTEGER
+  roles TEXT
 );
 
 --CREATE TABLE roles
 CREATE TABLE roles(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  Movies_id INTEGER,
-  actor_id INTEGER,
+  Movies TEXT,
+  actor TEXT,
   character TEXT
 );
 
 --CREATE TABLE actor
 CREATE TABLE actor(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  Movies_id INTEGER,
+  Movies TEXT,
   name_first TEXT,
   name_last TEXT
-  roles_id INTEGER
+  roles TEXT
 );
 
 
@@ -161,7 +154,7 @@ INSERT INTO Roles (Movies_ID, actor_id, character) VALUES (1,1, "Batman");
 
 -- The SQL statement for the movies output
 -- TODO!
-SELECT title, year, MPAA, studio, roles_id FROM Movies;
+SELECT title, year, MPAA, studio FROM Movies;
 
 -- Prints a header for the cast output
 .print ""
