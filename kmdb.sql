@@ -118,7 +118,7 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
   year INTEGER,
   MPAA TEXT,
   studio TEXT,
-  roles TEXT
+  FOREIGN KEY roles_id INTEGER
 );
 
 --CREATE TABLE roles
