@@ -163,6 +163,9 @@ INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Commissioner Gordon"
 INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Bane", 3, 5);
 INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("John Blake", 3, 5);
 INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Selia Kyle", 3, 5);
+INSERT INTO Actor (name_first, name_last, Movies_id, Roles_id) Values ("Christian", "Bale", 1, 1)
+INSERT INTO Actor (name_first, name_last, Movies_id, Roles_id) Values ("Christian", "Bale", 2, 1)
+INSERT INTO Actor (name_first, name_last, Movies_id, Roles_id) Values ("Christian", "Bale", 3, 1)
 
 -- Prints a header for the movies output
 .print "Movies"
