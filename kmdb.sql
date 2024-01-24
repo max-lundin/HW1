@@ -124,11 +124,7 @@ Movies_id INTEGER PRIMARY KEY AUTOINCREMENT,
 CREATE TABLE actor(
   actor_id INTEGER PRIMARY KEY AUTOINCREMENT,
   name_first TEXT,
-  name_last TEXT,
-  Movies_id INTEGER,
-  roles_id INTEGER,
-  FOREIGN KEY (Movies_id) REFERENCES Movies(Movies_id),
-  FOREIGN KEY (roles_id) REFERENCES roles(roles_id)
+  name_last TEXT
 );
 
 
@@ -150,24 +146,34 @@ CREATE TABLE roles(
 INSERT INTO Movies (title, year, MPAA, studio) VALUES ("Batman Begins","2005", "PG-13", "Warner Bros.");
 INSERT INTO Movies (title, year, MPAA, studio) VALUES ("The Dark Knight","2008", "PG-13", "Warner Bros.");
 INSERT INTO Movies (title, year, MPAA, studio) VALUES ("The Dark Knight Rises","2012", "PG-13", "Warner Bros.");
-INSERT INTO Actor (name_first, name_last, Movies_id, Roles_id) Values ("Christian", "Bale", 1, 1);
-INSERT INTO Actor (name_first, name_last, Movies_id, Roles_id) Values ("Christian", "Bale", 2, 1);
-INSERT INTO Actor (name_first, name_last, Movies_id, Roles_id) Values ("Christian", "Bale", 3, 1);
+
+INSERT INTO Actor (name_first, name_last) Values ("Christian", "Bale");
+INSERT INTO Actor (name_first, name_last) Values ("Michael", "Caine");
+INSERT INTO Actor (name_first, name_last) Values ("Liam", "Neeson");
+INSERT INTO Actor (name_first, name_last) Values ("Katie", "Holmes");
+INSERT INTO Actor (name_first, name_last) Values ("Gary", "Oldman");
+INSERT INTO Actor (name_first, name_last) Values ("Heath", "Ledger");
+INSERT INTO Actor (name_first, name_last) Values ("Aaron", "Eckhart");
+INSERT INTO Actor (name_first, name_last) Values ("Maggie", "Gyllenhaal");
+INSERT INTO Actor (name_first, name_last) Values ("Tom", "Hardy");
+INSERT INTO Actor (name_first, name_last) Values ("Joseph", "Gordon-Levitt");
+INSERT INTO Actor (name_first, name_last) Values ("Anne", "Hathaway");
+
 INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Bruce Wayne", 1, 1);
 INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Alfred", 1, 2);
 INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Ra's Al Ghul", 1, 3);
 INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Rachel Dawes", 1, 4);
 INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Commissioner Gordon", 1, 5);
-INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Bruce Wayne", 2, 5);
-INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Joker", 2, 5);
-INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Harvey Dent", 2, 5);
-INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Alfred", 2, 5);
-INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Rachel Dawes", 2, 5);
-INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Bruce Wayne", 3, 5);
+INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Bruce Wayne", 2, 1);
+INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Joker", 2, 6);
+INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Harvey Dent", 2, 7);
+INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Alfred", 2, 2);
+INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Rachel Dawes", 2, 8);
+INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Bruce Wayne", 3, 1);
 INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Commissioner Gordon", 3, 5);
-INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Bane", 3, 5);
-INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("John Blake", 3, 5);
-INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Selia Kyle", 3, 5);
+INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Bane", 3, 9);
+INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("John Blake", 3, 10);
+INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Selia Kyle", 3, 11);
 
 
 -- Prints a header for the movies output
@@ -188,7 +194,15 @@ SELECT title, year, MPAA, studio FROM Movies;
 
 -- The SQL statement for the cast output
 -- TODO!
+
+--SELECT Movies.title AS movie_title, actor.name_first, actor.name_last, roles.character
+--FROM Movies AS Movies
+--INNER JOIN roles AS roles ON Movies.Movies_id = roles.Movies_id
+--INNER JOIN actor AS actor ON roles.actor_id = actor.actor_id
+--ORDER BY movie_title, name_first, name_last;
+
 SELECT Movies.title AS movie_title, actor.name_first, actor.name_last, roles.character
-FROM Movies
-INNER JOIN roles ON Movies.Movies_id = roles.Movies_id
-INNER JOIN actor ON roles.actor_id = actor.actor_id;
+FROM Movies AS Movies
+INNER JOIN roles AS roles ON Movies.Movies_id = roles.Movies_id
+INNER JOIN actor AS actor ON roles.actor_id = actor.actor_id
+ORDER BY movie_title, name_first, name_last;
