@@ -181,7 +181,7 @@ INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Bruce Wayne", 3, 1);
 INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Commissioner Gordon", 3, 5);
 INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Bane", 3, 9);
 INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("John Blake", 3, 10);
-INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Selia Kyle", 3, 11);
+INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Selina Kyle", 3, 11);
 
 
 -- Prints a header for the movies output
