@@ -188,7 +188,7 @@ SELECT title, year, MPAA, studio FROM Movies;
 
 -- The SQL statement for the cast output
 -- TODO!
-SELECT Movies.title AS movie_title, actor.name_first, actor.name_last
+SELECT Movies.title AS movie_title, actor.name_first, actor.name_last, roles.character
 FROM Movies
 INNER JOIN roles ON Movies.Movies_id = roles.Movies_id
 INNER JOIN actor ON roles.actor_id = actor.actor_id;
