@@ -117,16 +117,17 @@ Movies_id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT,
   year INTEGER,
   MPAA TEXT,
-  studio TEXT,
-  FOREIGN KEY (roles_id) INTEGER
+  studio TEXT
 );
 
 --CREATE TABLE roles
 CREATE TABLE roles(
   roles_id INTEGER PRIMARY KEY AUTOINCREMENT,
-  FOREIGN KEY (Movies_id) TEXT,
-  FOREIGN KEY (actor_id) TEXT,
-  character TEXT
+  character TEXT,
+  Movies_id INTEGER,
+  actor_id INTEGER,
+  FOREIGN KEY (Movies_id) REFERENCES Movies(Movies_id),
+  FOREIGN KEY (actor_id) REFERENCES actor(actor_id)
 );
 
 --CREATE TABLE actor
@@ -134,8 +135,10 @@ CREATE TABLE actor(
   actor_id INTEGER PRIMARY KEY AUTOINCREMENT,
   name_first TEXT,
   name_last TEXT,
-  FOREIGN KEY (movies_id),
-  FOREIGN KEY (roles_id) TEXT
+  Movies_id INTEGER,
+  roles_id INTEGER,
+  FOREIGN KEY (Movies_id) REFERENCES Movies(Movies_id),
+  FOREIGN KEY (roles_id) REFERENCES roles(roles_id),
 );
 
 
