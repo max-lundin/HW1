@@ -192,7 +192,7 @@ INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Selia Kyle", 3, 11);
 -- The SQL statement for the movies output
 -- TODO!
 SELECT title, year, MPAA, studio.name FROM Movies
-INNER JOIN studio as studio ON Movies.Movies_id = studio.Movies_id
+INNER JOIN studio as studio ON Movies.studio_id = studio.studio_id
 ;
 
 -- Prints a header for the cast output
@@ -207,7 +207,4 @@ INNER JOIN studio as studio ON Movies.Movies_id = studio.Movies_id
 SELECT Movies.title AS movie_title, actor.name_first, actor.name_last, roles.character
 FROM Movies AS Movies
 INNER JOIN roles AS roles ON Movies.Movies_id = roles.Movies_id
-INNER JOIN actor AS actor ON roles.actor_id = actor.actor_id
-ORDER BY movie_title, name_first, name_last;
-
---remove order by?
+INNER JOIN actor AS actor ON roles.actor_id = actor.actor_id;
