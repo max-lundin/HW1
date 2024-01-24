@@ -112,12 +112,18 @@ DROP TABLE IF EXISTS actor;
 -- Create new tables, according to your domain model
 -- TODO!
 
+CREATE TABLE Studio(
+Studio_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT
+);
+
 CREATE TABLE Movies(
 Movies_id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT,
   year INTEGER,
   MPAA TEXT,
-  studio TEXT
+  studio_id INTEGER,
+  FOREIGN KEY (Studio_id) REFERENCES studio(studio_id)
 );
 
 --CREATE TABLE actor
@@ -143,9 +149,11 @@ CREATE TABLE roles(
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
-INSERT INTO Movies (title, year, MPAA, studio) VALUES ("Batman Begins","2005", "PG-13", "Warner Bros.");
-INSERT INTO Movies (title, year, MPAA, studio) VALUES ("The Dark Knight","2008", "PG-13", "Warner Bros.");
-INSERT INTO Movies (title, year, MPAA, studio) VALUES ("The Dark Knight Rises","2012", "PG-13", "Warner Bros.");
+INSERT INTO Studio (name) VALUES ("Warner Bros.");
+
+INSERT INTO Movies (title, year, MPAA, studio_id) VALUES ("Batman Begins","2005", "PG-13", 1);
+INSERT INTO Movies (title, year, MPAA, studio_id) VALUES ("The Dark Knight","2008", "PG-13", 1);
+INSERT INTO Movies (title, year, MPAA, studio_id) VALUES ("The Dark Knight Rises","2012", "PG-13", 1);
 
 INSERT INTO Actor (name_first, name_last) Values ("Christian", "Bale");
 INSERT INTO Actor (name_first, name_last) Values ("Michael", "Caine");
@@ -183,14 +191,15 @@ INSERT INTO Roles (character, Movies_id, actor_id) VALUES ("Selia Kyle", 3, 11);
 
 -- The SQL statement for the movies output
 -- TODO!
-SELECT title, year, MPAA, studio FROM Movies;
+SELECT title, year, MPAA, studio.name FROM Movies
+INNER JOIN studio as studio ON Movies.Movies_id = studio.Movies_id
+;
 
 -- Prints a header for the cast output
 .print ""
 .print "Top Cast"
 .print "========"
 .print ""
-
 
 -- The SQL statement for the cast output
 -- TODO!
@@ -200,3 +209,5 @@ FROM Movies AS Movies
 INNER JOIN roles AS roles ON Movies.Movies_id = roles.Movies_id
 INNER JOIN actor AS actor ON roles.actor_id = actor.actor_id
 ORDER BY movie_title, name_first, name_last;
+
+--remove order by?
